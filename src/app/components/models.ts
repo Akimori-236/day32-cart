@@ -5,6 +5,7 @@ export interface Item {
 
 export interface LineItem extends Item{
     qty: number
+    subtotal : number
 }
 
 export interface Customer {

@@ -25,8 +25,7 @@ export class InventoryComponent implements OnInit {
   inventoryForm!: FormGroup
 
   @Output()
-  onSubmission = new Subject<LineItem>()
-
+  onAddToCart = new Subject<LineItem>()
 
   constructor(private fb: FormBuilder) { }
 
@@ -56,10 +55,11 @@ export class InventoryComponent implements OnInit {
     }
   }
 
-  submitForm() {
+  addToCart() {
     const li = this.inventoryForm.value as LineItem
     console.info("new line item", li)
-    this.onSubmission.next(li)
+    this.onAddToCart.next(li)
+    this.inventoryForm.reset()
   }
 
   isFormInvalid(): boolean {

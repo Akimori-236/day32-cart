@@ -1,31 +1,41 @@
 <h1>Your Cart</h1>
 <form [formGroup]="cartForm">
-    <table>
-        <tr>
-            <td>Name:</td>
-            <td><input type="text" formControlName="name"></td>
-        </tr>
-        <tr>
-            <td>Address:</td>
-            <td><input type="text" formControlName="address"></td>
-        </tr>
-        <tr>
-            <td>Delivery:</td>
-            <td>
-                <input type="radio" formControlName="delivery" value="am"><span>AM</span>
-                <input type="radio" formControlName="delivery" value="pm"><span>PM</span>
-            </td>
-        </tr>
-    </table>
-    <br>
-    <table>
-        <thead>
-            <th>Items</th>
-            <th>Unit Price</th>
-            <th>Quantity</th>
-        </thead>
-        <tbody>
-            <tr><td></td></tr>
-        </tbody>
-    </table>
+  <table>
+    <tr>
+      <td>Name:</td>
+      <td><input type="text" formControlName="name" /></td>
+    </tr>
+    <tr>
+      <td>Address:</td>
+      <td><input type="text" formControlName="address" /></td>
+    </tr>
+    <tr>
+      <td>Delivery:</td>
+      <td>
+        <input type="radio" formControlName="delivery" value="am" /><span
+          >AM</span
+        >
+        <input type="radio" formControlName="delivery" value="pm" /><span
+          >PM</span
+        >
+      </td>
+    </tr>
+  </table>
+  <br />
+  <table>
+    <thead>
+      <th>Items</th>
+      <th>Unit Price</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
+    </thead>
+    <tbody *ngFor="let lineitem of cart; let i = index">
+      <tr>
+        <td>{{ lineitem.item }}</td>
+        <td>{{ lineitem.unitPrice }}</td>
+        <td>{{ lineitem.qty }}</td>
+        <td>{{lineitem.subtotal}}</td>
+      </tr>
+    </tbody>
+  </table>
 </form>

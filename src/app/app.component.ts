@@ -7,24 +7,23 @@ import { Subject } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
   title = 'day32-cart';
-  customer!: Customer
-
-  ngOnInit(): void {
-    this.customer = {
-      name: "",
-      address: "",
-      delivery: "",
-      cart: []
-    }
-  }
-
+  cart: LineItem[] = []
 
   insertNewLineItem(li: LineItem) {
-    this.customer.cart.push(li)
-    console.info(">>> customer: ", this.customer)
+    // search for duplicate before pushing
+    let existingLineItem: LineItem | undefined = this.cart.find((lineitem: LineItem) => lineitem.item == li.item)
+
+    if (!!existingLineItem) {
+      existingLineItem.qty += 1
+      existingLineItem.subtotal = existingLineItem.qty * existingLineItem.unitPrice
+    } else {
+      li.subtotal = li.qty * li.unitPrice
+      this.cart.push(li)
+    }
+    console.info(">>> CART: ", this.cart)
   }
 
 

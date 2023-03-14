@@ -8,13 +8,12 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  cart!: LineItem[]
 
   cartForm!: FormGroup
   itemArray!: FormArray
 
   @Input()
-  newLineItem!: LineItem
+  cart!: LineItem[]
 
   constructor(private fb: FormBuilder) { }
 
@@ -33,6 +32,7 @@ export class CartComponent implements OnInit {
   }
 
   saveForm() {
-    const cart = this.cartForm.value as Customer
+    const customer = this.cartForm.value as Customer
+    console.info(">>> CUSTOMER", customer)
   }
 }
