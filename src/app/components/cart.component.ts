@@ -31,7 +31,7 @@ export class CartComponent implements OnInit {
     })
   }
 
-  saveForm() {
+  checkout() {
     const customer = this.cartForm.value as Customer
     console.info(">>> CUSTOMER", customer)
   }

@@ -1,5 +1,5 @@
 <h1>Your Cart</h1>
-<form [formGroup]="cartForm">
+<form [formGroup]="cartForm" (ngSubmit)="checkout()">
   <table>
     <tr>
       <td>Name:</td>
@@ -31,11 +31,12 @@
     </thead>
     <tbody *ngFor="let lineitem of cart; let i = index">
       <tr>
-        <td>{{ lineitem.item }}</td>
-        <td>{{ lineitem.unitPrice }}</td>
-        <td>{{ lineitem.qty }}</td>
-        <td>{{lineitem.subtotal}}</td>
+        <td>{{ lineitem.item | titlecase }}</td>
+        <td>{{ lineitem.unitPrice | currency }}</td>
+        <td>{{ lineitem.qty | number }}</td>
+        <td>{{ lineitem.subtotal | currency }}</td>
       </tr>
     </tbody>
   </table>
+  <button type="submit">Checkout</button>
 </form>
