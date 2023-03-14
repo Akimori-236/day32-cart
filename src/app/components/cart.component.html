@@ -37,6 +37,10 @@
         <td>{{ lineitem.subtotal | currency }}</td>
       </tr>
     </tbody>
+    <tr>
+      <td>Total:</td>
+      <td formControlName="total"></td>
+    </tr>
   </table>
-  <button type="submit">Checkout</button>
+  <button type="submit" [disabled]="cartForm.invalid">Checkout</button>
 </form>

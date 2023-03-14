@@ -27,11 +27,13 @@ export class CartComponent implements OnInit {
       name: this.fb.control<string>('', [Validators.required]),
       address: this.fb.control<string>('', [Validators.required]),
       delivery: this.fb.control<string>('', [Validators.required]),
-      lineItems: this.itemArray
+      cart: this.itemArray,
+      total: this.fb.control<number>(0)
     })
   }
 
   checkout() {
+    const cartArray = this.cartForm.get('cart') as FormArray
     const customer = this.cartForm.value as Customer
     console.info(">>> CUSTOMER", customer)
   }
