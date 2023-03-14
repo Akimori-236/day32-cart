@@ -16,8 +16,9 @@ export class AppComponent {
     // search for duplicate before pushing
     let existingLineItem: LineItem | undefined = this.cart.find((lineitem: LineItem) => lineitem.item == li.item)
 
+    // calculate new subtotal of lineitem
     if (!!existingLineItem) {
-      existingLineItem.qty += 1
+      existingLineItem.qty += li.qty
       existingLineItem.subtotal = existingLineItem.qty * existingLineItem.unitPrice
     } else {
       li.subtotal = li.qty * li.unitPrice
