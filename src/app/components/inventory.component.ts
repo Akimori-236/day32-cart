@@ -25,7 +25,7 @@ export class InventoryComponent implements OnInit {
   inventoryForm!: FormGroup
 
   @Output()
-  onAddToCart = new Subject<LineItem>()
+  onAddToCart = new Subject<LineItem>
 
   constructor(private fb: FormBuilder) { }
 
